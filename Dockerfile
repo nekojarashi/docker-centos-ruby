@@ -1,4 +1,4 @@
-FROM  yokubo/centos-base:6.9
+FROM  ac3agrtp/centos-base:6.9
 LABEL maintainer="y-okubo"
 
 RUN git clone git://github.com/rbenv/rbenv.git /usr/local/rbenv \
