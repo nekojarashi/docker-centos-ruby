@@ -1,7 +1,7 @@
-FROM  ac3agrtp/centos-base:6.9
+FROM  ac3agrtp/centos-base:7.5.1804
 LABEL maintainer="y-okubo"
 
-ARG RUBY_VERSION="2.3.3"
+ARG RUBY_VERSION="2.3.4"
 
 RUN git clone git://github.com/rbenv/rbenv.git /usr/local/rbenv \
 &&  git clone git://github.com/rbenv/ruby-build.git /usr/local/rbenv/plugins/ruby-build \
