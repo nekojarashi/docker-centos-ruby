@@ -1,6 +1,8 @@
 FROM  ac3agrtp/centos-base:6.9
 LABEL maintainer="y-okubo"
 
+ARG RUBY_VERSION="2.3.3"
+
 RUN git clone git://github.com/rbenv/rbenv.git /usr/local/rbenv \
 &&  git clone git://github.com/rbenv/ruby-build.git /usr/local/rbenv/plugins/ruby-build \
 &&  git clone git://github.com/jf/rbenv-gemset.git /usr/local/rbenv/plugins/rbenv-gemset \
@@ -19,7 +21,7 @@ RUN echo 'export RBENV_ROOT=/usr/local/rbenv' >> /root/.bashrc \
 ENV CONFIGURE_OPTS --disable-install-doc
 ENV PATH /usr/local/rbenv/bin:/usr/local/rbenv/shims:$PATH
 
-RUN eval "$(rbenv init -)"; rbenv install 2.1.2 \
-&&  eval "$(rbenv init -)"; rbenv global 2.1.2 \
+RUN eval "$(rbenv init -)"; rbenv install $RUBY_VERSION \
+&&  eval "$(rbenv init -)"; rbenv global $RUBY_VERSION \
 &&  eval "$(rbenv init -)"; gem update --system \
 # &&  eval "$(rbenv init -)"; gem install bundler
