@@ -21,6 +21,7 @@ RUN echo 'export RBENV_ROOT=/usr/local/rbenv' >> /root/.bashrc \
 ENV CONFIGURE_OPTS --disable-install-doc
 ENV PATH /usr/local/rbenv/bin:/usr/local/rbenv/shims:$PATH
 
-RUN eval "$(rbenv init -)"; rbenv install $RUBY_VERSION \
-&&  eval "$(rbenv init -)"; rbenv global $RUBY_VERSION \
-&&  eval "$(rbenv init -)"; gem install bundler --no-doc
+RUN eval "$(rbenv init -)"; rbenv install $RUBY_VERSION
+RUN eval "$(rbenv init -)"; rbenv global $RUBY_VERSION
+RUN eval "$(rbenv init -)"; gem update --system
+RUN eval "$(rbenv init -)"; bundle config build.nokogiri --use-system-libraries
