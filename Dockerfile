@@ -7,6 +7,7 @@ RUN git clone git://github.com/rbenv/rbenv.git /usr/local/rbenv \
 &&  git clone git://github.com/rbenv/ruby-build.git /usr/local/rbenv/plugins/ruby-build \
 &&  git clone git://github.com/jf/rbenv-gemset.git /usr/local/rbenv/plugins/rbenv-gemset \
 &&  /usr/local/rbenv/plugins/ruby-build/install.sh
+
 ENV PATH /usr/local/rbenv/bin:$PATH
 ENV RBENV_ROOT /usr/local/rbenv
 
@@ -21,7 +22,7 @@ RUN echo 'export RBENV_ROOT=/usr/local/rbenv' >> /root/.bashrc \
 ENV CONFIGURE_OPTS --disable-install-doc
 ENV PATH /usr/local/rbenv/bin:/usr/local/rbenv/shims:$PATH
 
-RUN eval "$(rbenv init -)"; rbenv install $RUBY_VERSION
-RUN eval "$(rbenv init -)"; rbenv global $RUBY_VERSION
-RUN eval "$(rbenv init -)"; gem update --system
-RUN eval "$(rbenv init -)"; bundle config build.nokogiri --use-system-libraries
+RUN eval "$(rbenv init -)"; rbenv install $RUBY_VERSION \
+&&  eval "$(rbenv init -)"; rbenv global $RUBY_VERSION \
+&&  eval "$(rbenv init -)"; gem update --system \
+&&  eval "$(rbenv init -)"; bundle config build.nokogiri --use-system-libraries
